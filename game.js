@@ -10,7 +10,7 @@ function playRound(playerSelection, computerSelection) {
     const isTie = playerSelection === computerSelection;
     if (isTie) {
         alert("we have a tie! in this round click ok to continue")
-        return "It's a tie! Friendship wins!"
+        return "It's a tie! Friendship rulez!"
     } else if (playerWon) {
         alert(`you won this round the ${playerSelection} beats ${computerSelection} click ok to continue`)
         return `You win! ${playerSelection} beats ${computerSelection}`
@@ -49,8 +49,8 @@ function game() {
 
 
         alert('Welcome to Famous Game Rock paper scissors: you have five rounds and the valid choices are [Rock (R), Paper (P), Scissors (S)] to start the game click the ok button and good luck ;)')
-
-        for (let i = 0; i < 5; i++) {
+        const numberOfRounds = 5;
+        for (let i = 0; i < numberOfRounds; i++) {
             const playerRawSelection = prompt('Enter your choice: Rock (R), Paper (P) or Scissors (S)')
             const allowedShortInputs = ['r', 'p', 's'];
             const allowedInputs = ['rock', 'paper', 'scissors'];
@@ -66,23 +66,8 @@ function game() {
                 alert('See you around thank you')
                 return window.location.reload()
             } else if (!isValidInput) {
-
-                if (i === 0) {
-                    alert("please type a valid choice, Round 01 reset")
-                    i--
-                } else if (i === 1) {
-                    alert("please type a valid choice, Round 02 reset")
-                    i--
-                } else if (i === 2) {
-                    alert("please type a valid choice, Round 03 reset")
-                    i--
-                } else if (i === 3) {
-                    alert("please type a valid choice, Round 04 reset")
-                    i--
-                } else if (i === 4) {
-                    alert("please type a valid choice, Round 05 reset")
-                    i--
-                }
+                alert(`please type a valid choice, Round ${i + 1} reset`)
+                i--
             } else {
                 const result = playRound(playerSelection, computerSelection)
                 if (result.includes('win')) {
