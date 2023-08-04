@@ -7,7 +7,6 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
 
-    
         if (playerSelection === computerSelection) {
             alert("we have a tie! in this round click ok to continue")
             return "It's a tie! Friendship wins!"
@@ -22,7 +21,6 @@ function playRound(playerSelection, computerSelection) {
             alert(`you lost this round the ${playerSelection} beats ${computerSelection} click ok to continue`)
             return `You lose! ${playerSelection} beats ${computerSelection}`       
         }
-    
 }
 
 function game() {
@@ -35,40 +33,35 @@ function game() {
         const playerSelection = prompt('Enter your choice: Rock, Paper or Scissors')
         const computerSelection = computerPlay()
       
-        if(playerSelection === null){
+        if (playerSelection === null) {
             alert('See you around thank you')
             return window.location.reload()
+        } else if ((playerSelection.toLowerCase() !== 'rock') && (playerSelection.toLowerCase() !== 'scissors') && (playerSelection.toLowerCase() !== 'paper' )) {
 
-        } else if ((playerSelection.toLowerCase() !== 'rock') && (playerSelection.toLowerCase() !== 'scissors') && (playerSelection.toLowerCase() !== 'paper' )){
-            if(i === 0) {
+            if (i === 0) {
                 alert("please type a valid choice, Round 01 reset")
                 i--
-            } else if (i === 1){
+            } else if (i === 1) {
                 alert("please type a valid choice, Round 02 reset")
                 i--
-            } else if (i === 2){
+            } else if (i === 2) {
                 alert("please type a valid choice, Round 03 reset")
                 i--
-             } else if (i === 3){
+             } else if (i === 3) {
                 alert("please type a valid choice, Round 04 reset")
                 i--
-            }else if (i === 4){
+            } else if (i === 4) {
                 alert("please type a valid choice, Round 05 reset")
                 i--
             }
-
         } else {
-        const result = playRound(playerSelection, computerSelection)
-
-        if (result.includes('win')) {
-            playerScore++
-        } else if (result.includes('lose')) {
-            computerScore++
-        }
-
-        }
-
-        
+            const result = playRound(playerSelection, computerSelection)
+            if (result.includes('win')) {
+                playerScore++
+                } else if (result.includes('lose')) {
+                computerScore++
+            }
+        }   
     }
 
     if (playerScore > computerScore) {
