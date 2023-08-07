@@ -48,7 +48,9 @@ function game() {
 
 
 
-        alert('Welcome to Famous Game Rock paper scissors: you have five rounds and the valid choices are [Rock (R), Paper (P), Scissors (S)] to start the game click the ok button and good luck ;)')
+        alert(
+            '👾Greetings, Intergalactic Gamer!👾 \n\nIn a distant universe, where aliens have impeccable fashion sense and asteroids wear stylish hats, a legendary showdown is about to begin! \nBrace yourself for the cosmic clash of "Rock, Scissors, Paper!" 🚀  \n\nYou have five rounds and the valid choices are: \nRock(R) \nPaper(P) \nScissors(S) \nTo start the game click the Close button and good luck! \n\nP.S. Choose your weapon wisely!'
+            )
         const numberOfRounds = 5;
         for (let i = 0; i < numberOfRounds; i++) {
             const playerRawSelection = prompt('Enter your choice: Rock (R), Paper (P) or Scissors (S)')
