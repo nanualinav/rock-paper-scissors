@@ -21,19 +21,10 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function generateRandomNumber(min, max) {
-
-    return min + Math.floor(Math.random() * (max - min))
-}
-
-function game() {
-    let playerScore = 0
-    let computerScore = 0
-
+function welcomeUser() {
     alert(
         '👾Greetings, Intergalactic Gamer!👾 \n\nIn a distant universe, where aliens have impeccable fashion sense and asteroids wear stylish hats, a legendary showdown is about to begin! \nBrace yourself for the cosmic clash of "Rock, Scissors, Paper!" 🚀  \n\nYou have five rounds and the valid choices are: \nRock(R) \nPaper(P) \nScissors(S) \nTo start the game click the Close button and good luck! \n\nP.S. Choose your weapon wisely!'
     )
-
     let isPlayerReady = confirm('Are you ready for this game?? Click OK if you are ready!')
 
     if (isPlayerReady) {
@@ -50,49 +41,65 @@ function game() {
 
         for (let i = 0; i < numberOfMessages; i++) {
             alert(messages[i]);
-        }
-        const numberOfRounds = 5;
-        for (let i = 0; i < numberOfRounds; i++) {
-            const playerRawSelection = prompt('Enter your choice: Rock (R), Paper (P) or Scissors (S)')
-            const allowedShortInputs = ['r', 'p', 's'];
-            const allowedInputs = ['rock', 'paper', 'scissors'];
-            let playerSelection = playerRawSelection;
-            if (allowedShortInputs.includes(playerRawSelection)) {
-                playerSelection = allowedInputs[allowedShortInputs.indexOf(playerRawSelection)]
-            }
-            const computerSelection = computerPlay()
-
-            const isValidInput = allowedInputs.some(input => input === playerSelection.toLowerCase());
-
-            if (playerSelection === null) {
-                alert('See you around thank you')
-                return window.location.reload()
-            } else if (!isValidInput) {
-                alert(`please type a valid choice, Round ${i + 1} reset`)
-                i--
-            } else {
-                const result = playRound(playerSelection, computerSelection)
-                if (result.includes('won')) {
-                    playerScore++
-                } else if (result.includes('lost')) {
-                    computerScore++
-                }
-            }
-        }
-
-        if (playerScore > computerScore) {
-            alert('Bravo! You won the game!!!')
-            return window.location.reload()
-        } else if (playerScore < computerScore) {
-            alert("You lost!!! Don't panic, you can play again!")
-            return window.location.reload()
-        } else {
-            alert("It's a tie! Friendship wins!")
-            return window.location.reload()
-        }
+        }  
     } else {
         alert('Umm..I understand, you are scared :( See you around then!')
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => setTimeout(game));
+function generateRandomNumber(min, max) {
+
+    return min + Math.floor(Math.random() * (max - min))
+}
+
+function game() {
+    let playerScore = 0
+    let computerScore = 0
+    const numberOfRounds = 5;
+
+    welcomeUser()
+
+    for (let i = 0; i < numberOfRounds; i++) {
+        const playerRawSelection = prompt('Enter your choice: Rock (R), Paper (P) or Scissors (S)')
+        const allowedShortInputs = ['r', 'p', 's'];
+        const allowedInputs = ['rock', 'paper', 'scissors'];
+        let playerSelection = playerRawSelection;
+        if (allowedShortInputs.includes(playerRawSelection)) {
+            playerSelection = allowedInputs[allowedShortInputs.indexOf(playerRawSelection)]
+        }
+        const computerSelection = computerPlay()
+
+        const isValidInput = allowedInputs.some(input => input === playerSelection.toLowerCase());
+
+        if (playerSelection === null) {
+            alert('See you around thank you')
+            return window.location.reload()
+        } else if (!isValidInput) {
+            alert(`please type a valid choice, Round ${i + 1} reset`)
+            i--
+        } else {
+            const result = playRound(playerSelection, computerSelection)
+            if (result.includes('won')) {
+                playerScore++
+            } else if (result.includes('lost')) {
+                computerScore++
+            }
+        }
+        revealWinner(playerScore, computerScore)
+    }
+}
+
+function revealWinner(playerScore, computerScore) {
+    if (playerScore > computerScore) {
+        alert('Bravo! You won the game!!!')
+        return window.location.reload()
+    } else if (playerScore < computerScore) {
+        alert("You lost!!! Don't panic, you can play again!")
+        return window.location.reload()
+    } else {
+        alert("It's a tie! Friendship wins!")
+        return window.location.reload()
+    }
+}
+
+game()
