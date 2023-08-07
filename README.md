@@ -1,7 +1,7 @@
 
 live link: https://nanualinav.github.io/rock-paper-scissors/
 <p align="center">
-   <img width="500" height = "400" alt="projectfinal" src="https://github.com/nanualinav/rock-paper-scissors/assets/81826528/03ac9a7e-d826-468c-b070-cc5f3ede62d8%22%3E
+   <img width="500" height = "400" alt="projectfinal" src="https://github.com/nanualinav/rock-paper-scissors/assets/81826528/03ac9a7e-d826-468c-b070-cc5f3ede62d8%22%3E">
 </p>
 
 &nbsp;
