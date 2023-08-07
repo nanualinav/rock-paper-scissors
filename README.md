@@ -1,12 +1,8 @@
 
-## live link: https://nanualinav.github.io/rock-paper-scissors/ 
+live link: https://nanualinav.github.io/rock-paper-scissors/
 <p align="center">
-  <a href="https://codesandbox.io">
-   <img width="939" alt="projectfinal" src="">
-
-  </a>
+   <img width="500" height = "400" alt="projectfinal" src="https://github.com/nanualinav/rock-paper-scissors/assets/81826528/03ac9a7e-d826-468c-b070-cc5f3ede62d8%22%3E
 </p>
-
 
 &nbsp;
 
