@@ -3,6 +3,7 @@ function computerPlay() {
     const randomSelectionIndex = Math.floor(Math.random() * choices.length)
     return choices[randomSelectionIndex]
 }
+
 function playRound(playerSelection, computerSelection) {
     const playerWinConditions = ['rock:scissors', 'paper:rock', 'scissors:paper'];
     const playedCombination = playerSelection + ':' + computerSelection;
@@ -19,10 +20,12 @@ function playRound(playerSelection, computerSelection) {
         return `You lost! ${computerSelection} beats ${playerSelection}`
     }
 }
+
 function generateRandomNumber(min, max) {
 
     return min + Math.floor(Math.random() * (max - min))
 }
+
 function game() {
     let playerScore = 0
     let computerScore = 0
@@ -91,4 +94,5 @@ function game() {
         alert('Umm..I understand, you are scared :( See you around then!')
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => setTimeout(game));
