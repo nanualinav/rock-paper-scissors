@@ -1,79 +1,65 @@
-function computerPlay() {
-    const choices = ['rock', 'paper', 'scissors']
-    const randomSelectionIndex = Math.floor(Math.random() * choices.length)
-    return choices[randomSelectionIndex]
-}
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
+let isFirstGame = true;
 
+function computerChoice() {
+    const choices = ['rock', 'paper', 'scissors'];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
 
 function playRound(playerSelection, computerSelection) {
+    round++;
 
-        if (playerSelection === computerSelection) {
-            alert("we have a tie! in this round click ok to continue")
-            return "It's a tie! Friendship wins!"
-        } else if (
-            (playerSelection === 'rock' && computerSelection === 'scissors') ||
-            (playerSelection === 'paper' && computerSelection === 'rock') ||
-            (playerSelection === 'scissors' && computerSelection === 'paper')
-        ) {
-            alert(`you won this round the ${playerSelection} beats ${computerSelection} click ok to continue`)
-            return `You win! ${playerSelection} beats ${computerSelection}`
-        } else {
-            alert(`you lost this round the ${playerSelection} beats ${computerSelection} click ok to continue`)
-            return `You lose! ${playerSelection} beats ${computerSelection}`       
-        }
-}
-
-function game() {
-    let playerScore = 0
-    let computerScore = 0
-    
-    alert('Welcome to Famous Game Rock paper scissors: you have five rounds and the valid choices are [Rock, Paper, Scissors] to start the game click the ok button and good luck ;)')
-   
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Enter your choice: Rock, Paper or Scissors')
-        const computerSelection = computerPlay()
-      
-        if (playerSelection === null) {
-            alert('See you around thank you')
-            return window.location.reload()
-        } else if ((playerSelection.toLowerCase() !== 'rock') && (playerSelection.toLowerCase() !== 'scissors') && (playerSelection.toLowerCase() !== 'paper' )) {
-
-            if (i === 0) {
-                alert("please type a valid choice, Round 01 reset")
-                i--
-            } else if (i === 1) {
-                alert("please type a valid choice, Round 02 reset")
-                i--
-            } else if (i === 2) {
-                alert("please type a valid choice, Round 03 reset")
-                i--
-             } else if (i === 3) {
-                alert("please type a valid choice, Round 04 reset")
-                i--
-            } else if (i === 4) {
-                alert("please type a valid choice, Round 05 reset")
-                i--
-            }
-        } else {
-            const result = playRound(playerSelection, computerSelection)
-            if (result.includes('win')) {
-                playerScore++
-                } else if (result.includes('lose')) {
-                computerScore++
-            }
-        }   
-    }
-
-    if (playerScore > computerScore) {
-        alert('Bravo! You win the game!!!')
-        return window.location.reload()
-    } else if (playerScore < computerScore) {
-        alert("You lose!!! Don't panic, you can play again!")
-        return window.location.reload()
+    if (playerSelection === computerSelection) {
+        alert(`Round ${round}: It's a tie! Player: ${playerScore} Computer: ${computerScore}`);
+    } else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+    ) {
+        playerScore++;
+        alert(`Round ${round}: You win this round! Player: ${playerScore} Computer: ${computerScore}`);
     } else {
-        alert("It's a tie! Friendship wins!")
-        return window.location.reload()
+        computerScore++;
+        alert(`Round ${round}: Computer wins this round! Player: ${playerScore} Computer: ${computerScore}`);
+    }
+
+    if (round < 5) {
+        startGame();
+    } else {
+        if (playerScore > computerScore) {
+            alert(`Game over! You win! Player: ${playerScore} Computer: ${computerScore}`);
+        } else if (playerScore < computerScore) {
+            alert(`Game over! Computer wins! Player: ${playerScore} Computer: ${computerScore}`);
+        } else {
+            alert(`Game over! It's a tie! Player: ${playerScore} Computer: ${computerScore}`);
+        }
     }
 }
 
-game()
+function welcomeMessage(){
+    alert(
+        `👾Greetings, Intergalactic Gamer!👾 \n\nIn a distant universe, where aliens have impeccable fashion sense and asteroids wear stylish hats, a legendary showdown is about to begin! Brace yourself for the cosmic clash of "Rock, Scissors, Paper!" 🚀 \nTo start the game click the ok button and good luck! P.S. Choose your weapon wisely!`
+    )
+}
+
+function startGame() {
+    const playerSelection = prompt("Enter your choice: rock, paper, or scissors")?.toLowerCase()?.trim();
+    if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+        const computerSelection = computerChoice();
+        playRound(playerSelection, computerSelection);
+    } else {
+        alert("Invalid input! Please choose rock, paper, or scissors.");
+        startGame();
+    }
+}
+
+// this condition only to show the welcome message only when the game starts
+if(isFirstGame){
+    welcomeMessage()
+    isFirstGame = false
+}
+
+startGame();
